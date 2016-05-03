@@ -207,7 +207,7 @@ Public Class Form1
         Dim g As Graphics = Graphics.FromImage(exportImage)
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
         g.FillPolygon(New SolidBrush(Color.White), pointArray)
-        exportImage.Save("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\@Resources\Images\" + butName + "triangle.png", Imaging.ImageFormat.Png)
+        exportImage.Save("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\@Resources\Images\" + butName + "Triangle.png", Imaging.ImageFormat.Png)
         IO.Directory.CreateDirectory("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\" + butName)
 
         Using sw As New IO.StreamWriter("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\" + butName + "\" + butName + ".ini", False)
@@ -215,13 +215,23 @@ Public Class Form1
             sw.WriteLine("Update = 1000")
             sw.WriteLine()
             sw.WriteLine("[Variables]")
-            sw.WriteLine("H = " + Convert.ToString(horizontal))
-            sw.WriteLine("W = " + Convert.ToString(vertical))
+            sw.WriteLine("ImageH = " + Convert.ToString(horizontal))
+            sw.WriteLine("ImageW = " + Convert.ToString(vertical))
+            If graphicsVisible Then
+                sw.WriteLine("RotationNum = " + CInt(1))
+                sw.WriteLine("TriAngle = " + CInt(TriAngle))
+                sw.WriteLine("SpinSpeed = " + CInt(0.7))
+                sw.WriteLine("IntTriAngle = " + CInt(TriAngle))
+            End If
             sw.WriteLine()
-            sw.WriteLine("[" + butName + "]")
-            sw.WriteLine("Meter = Image")
-            sw.WriteLine("ImageName =#@#Images\" + Convert.ToString(BaseAngle) + "triangle.png")
-            sw.WriteLine("imageRotate = " + Convert.ToString(TriAngle))
+            If Not graphicsVisible Then
+                sw.WriteLine("[" + butName + "]")
+                sw.WriteLine("Meter = Image")
+                sw.WriteLine("ImageName =#@#Images\" + Convert.ToString(BaseAngle) + "triangle.png")
+                sw.WriteLine("imageRotate = " + Convert.ToString(TriAngle))
+            Else
+
+            End If
             sw.WriteLine("LeftMouseUpAction =[""" + UrlText.Text + """]")
             sw.WriteLine("ImageTint = " + Convert.ToString(rNum.Value) + "," _
                                         + Convert.ToString(gNum.Value) + "," _
@@ -231,8 +241,16 @@ Public Class Form1
             sw.WriteLine("[Metadata]")
             sw.WriteLine("Name = " + butName)
             sw.WriteLine("Author = JoKing")
-            sw.WriteLine("Info = Created using Pyramid Skin Maker: Version 0.2")
+            sw.WriteLine("Info = Created using Pyramid Skin Maker: Version 0.25")
         End Using
         Me.Close()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged_1(sender As Object, e As EventArgs) Handles graphicsCheck.CheckedChanged
+        Panel1.Visible = Not Panel1.Visible
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged_1(sender As Object, e As EventArgs) Handles spinCheck.CheckedChanged
+        graphicsVisible = spinCheck.Checked
     End Sub
 End Class

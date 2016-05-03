@@ -74,6 +74,11 @@ Partial Class Form1
         Me.SkinName = New System.Windows.Forms.TextBox()
         Me.IconCheck = New System.Windows.Forms.CheckBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.graphicsCheck = New System.Windows.Forms.CheckBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.spinMouseOverRadio = New System.Windows.Forms.RadioButton()
+        Me.spinClickRadio = New System.Windows.Forms.RadioButton()
+        Me.spinCheck = New System.Windows.Forms.CheckBox()
         Me.trianglePanel.SuspendLayout()
         CType(Me.TriAngleNum, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TriAngleBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,12 +100,13 @@ Partial Class Form1
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.skinPanel.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'createButton
         '
         Me.createButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.createButton.Location = New System.Drawing.Point(317, 205)
+        Me.createButton.Location = New System.Drawing.Point(317, 4)
         Me.createButton.Name = "createButton"
         Me.createButton.Size = New System.Drawing.Size(75, 66)
         Me.createButton.TabIndex = 0
@@ -602,9 +608,9 @@ Partial Class Form1
         Me.skinPanel.Controls.Add(Me.SkinName)
         Me.skinPanel.Controls.Add(Me.createButton)
         Me.skinPanel.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.skinPanel.Location = New System.Drawing.Point(343, 248)
+        Me.skinPanel.Location = New System.Drawing.Point(723, 26)
         Me.skinPanel.Name = "skinPanel"
-        Me.skinPanel.Size = New System.Drawing.Size(392, 275)
+        Me.skinPanel.Size = New System.Drawing.Size(392, 201)
         Me.skinPanel.TabIndex = 39
         '
         'urlLabel
@@ -620,7 +626,7 @@ Partial Class Form1
         '
         Me.UrlText.Location = New System.Drawing.Point(17, 103)
         Me.UrlText.Name = "UrlText"
-        Me.UrlText.Size = New System.Drawing.Size(250, 29)
+        Me.UrlText.Size = New System.Drawing.Size(183, 29)
         Me.UrlText.TabIndex = 21
         '
         'Label5
@@ -650,13 +656,69 @@ Partial Class Form1
         Me.IconCheck.Text = "Icon"
         Me.IconCheck.UseVisualStyleBackColor = True
         '
+        'graphicsCheck
+        '
+        Me.graphicsCheck.AutoSize = True
+        Me.graphicsCheck.Location = New System.Drawing.Point(343, 236)
+        Me.graphicsCheck.Name = "graphicsCheck"
+        Me.graphicsCheck.Size = New System.Drawing.Size(99, 24)
+        Me.graphicsCheck.TabIndex = 41
+        Me.graphicsCheck.Text = "Graphics"
+        Me.graphicsCheck.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.spinMouseOverRadio)
+        Me.Panel1.Controls.Add(Me.spinClickRadio)
+        Me.Panel1.Controls.Add(Me.spinCheck)
+        Me.Panel1.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Panel1.Location = New System.Drawing.Point(343, 267)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(313, 256)
+        Me.Panel1.TabIndex = 50
+        Me.Panel1.Visible = False
+        '
+        'spinMouseOverRadio
+        '
+        Me.spinMouseOverRadio.AutoSize = True
+        Me.spinMouseOverRadio.Location = New System.Drawing.Point(28, 69)
+        Me.spinMouseOverRadio.Name = "spinMouseOverRadio"
+        Me.spinMouseOverRadio.Size = New System.Drawing.Size(145, 25)
+        Me.spinMouseOverRadio.TabIndex = 53
+        Me.spinMouseOverRadio.Text = "On Mouse Over"
+        Me.spinMouseOverRadio.UseVisualStyleBackColor = True
+        '
+        'spinClickRadio
+        '
+        Me.spinClickRadio.AutoSize = True
+        Me.spinClickRadio.Checked = True
+        Me.spinClickRadio.Location = New System.Drawing.Point(28, 38)
+        Me.spinClickRadio.Name = "spinClickRadio"
+        Me.spinClickRadio.Size = New System.Drawing.Size(93, 25)
+        Me.spinClickRadio.TabIndex = 52
+        Me.spinClickRadio.TabStop = True
+        Me.spinClickRadio.Text = "On Click"
+        Me.spinClickRadio.UseVisualStyleBackColor = True
+        '
+        'spinCheck
+        '
+        Me.spinCheck.AutoSize = True
+        Me.spinCheck.Location = New System.Drawing.Point(3, 7)
+        Me.spinCheck.Name = "spinCheck"
+        Me.spinCheck.Size = New System.Drawing.Size(67, 25)
+        Me.spinCheck.TabIndex = 51
+        Me.spinCheck.Text = "Spin"
+        Me.spinCheck.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
-        Me.ClientSize = New System.Drawing.Size(747, 600)
+        Me.ClientSize = New System.Drawing.Size(1125, 600)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.graphicsCheck)
         Me.Controls.Add(Me.IconCheck)
         Me.Controls.Add(Me.skinPanel)
         Me.Controls.Add(Me.iconPanel)
@@ -691,6 +753,8 @@ Partial Class Form1
         CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.skinPanel.ResumeLayout(False)
         Me.skinPanel.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -747,4 +811,9 @@ Partial Class Form1
     Friend WithEvents triSizeCheck2 As CheckBox
     Friend WithEvents TriSizeCheck3 As CheckBox
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents graphicsCheck As CheckBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents spinMouseOverRadio As RadioButton
+    Friend WithEvents spinClickRadio As RadioButton
+    Friend WithEvents spinCheck As CheckBox
 End Class

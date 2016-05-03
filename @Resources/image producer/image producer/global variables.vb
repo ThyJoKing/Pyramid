@@ -17,4 +17,6 @@
     Public iconPosition As PointF = New PointF(0, 0)
     Public iconSize As Integer = 100
     Public iconAngle As Integer = 60
+
+    Public graphicsVisible As Boolean = False
 End Module

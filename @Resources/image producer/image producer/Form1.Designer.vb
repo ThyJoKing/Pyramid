@@ -499,9 +499,9 @@ Partial Class Form1
         Me.iconPanel.Controls.Add(Me.iconLabel)
         Me.iconPanel.Controls.Add(Me.iconText)
         Me.iconPanel.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iconPanel.Location = New System.Drawing.Point(12, 267)
+        Me.iconPanel.Location = New System.Drawing.Point(723, 26)
         Me.iconPanel.Name = "iconPanel"
-        Me.iconPanel.Size = New System.Drawing.Size(313, 256)
+        Me.iconPanel.Size = New System.Drawing.Size(313, 226)
         Me.iconPanel.TabIndex = 38
         Me.iconPanel.Visible = False
         '
@@ -533,7 +533,7 @@ Partial Class Form1
         Me.TrackBar1.Minimum = 30
         Me.TrackBar1.Name = "TrackBar1"
         Me.TrackBar1.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar1.Size = New System.Drawing.Size(69, 151)
+        Me.TrackBar1.Size = New System.Drawing.Size(69, 125)
         Me.TrackBar1.SmallChange = 5
         Me.TrackBar1.TabIndex = 47
         Me.TrackBar1.TickFrequency = 5
@@ -567,7 +567,7 @@ Partial Class Form1
         Me.TrackBar2.Minimum = -100
         Me.TrackBar2.Name = "TrackBar2"
         Me.TrackBar2.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar2.Size = New System.Drawing.Size(69, 151)
+        Me.TrackBar2.Size = New System.Drawing.Size(69, 125)
         Me.TrackBar2.TabIndex = 44
         Me.TrackBar2.TickFrequency = 10
         Me.TrackBar2.TickStyle = System.Windows.Forms.TickStyle.None
@@ -608,7 +608,7 @@ Partial Class Form1
         Me.skinPanel.Controls.Add(Me.SkinName)
         Me.skinPanel.Controls.Add(Me.createButton)
         Me.skinPanel.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.skinPanel.Location = New System.Drawing.Point(723, 26)
+        Me.skinPanel.Location = New System.Drawing.Point(723, 274)
         Me.skinPanel.Name = "skinPanel"
         Me.skinPanel.Size = New System.Drawing.Size(392, 201)
         Me.skinPanel.TabIndex = 39
@@ -691,12 +691,10 @@ Partial Class Form1
         'spinClickRadio
         '
         Me.spinClickRadio.AutoSize = True
-        Me.spinClickRadio.Checked = True
         Me.spinClickRadio.Location = New System.Drawing.Point(28, 38)
         Me.spinClickRadio.Name = "spinClickRadio"
         Me.spinClickRadio.Size = New System.Drawing.Size(93, 25)
         Me.spinClickRadio.TabIndex = 52
-        Me.spinClickRadio.TabStop = True
         Me.spinClickRadio.Text = "On Click"
         Me.spinClickRadio.UseVisualStyleBackColor = True
         '

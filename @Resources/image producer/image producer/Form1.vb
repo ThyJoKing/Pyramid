@@ -192,10 +192,18 @@ Public Class Form1
         End If
     End Sub
 
-    'Skin Stuff
-    Private Sub SkinName_TextChanged(sender As Object, e As EventArgs) Handles SkinName.TextChanged
-        butName = SkinName.Text()
+    'Graphics
+    Private Sub CheckBox1_CheckedChanged_1(sender As Object, e As EventArgs) Handles graphicsCheck.CheckedChanged
+        Panel1.Visible = Not Panel1.Visible
     End Sub
+    Private Sub CheckBox2_CheckedChanged_1(sender As Object, e As EventArgs) Handles spinCheck.CheckedChanged
+        spinClickRadio.Checked = spinCheck.Checked
+        If spinClickRadio.Checked = False Then
+            spinMouseOverRadio.Checked = False
+        End If
+    End Sub
+
+    'Skin Stuff
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles createButton.Click
         Dim vertical As Integer = (TriSize * Tan(BaseAngle * PI / 180)) / (Sqrt(Tan(BaseAngle * PI / 180) + 4))
         Dim horizontal As Integer = (2 * TriSize) / (Sqrt(Tan(BaseAngle * PI / 180) + 4))
@@ -207,30 +215,80 @@ Public Class Form1
         Dim g As Graphics = Graphics.FromImage(exportImage)
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
         g.FillPolygon(New SolidBrush(Color.White), pointArray)
-        exportImage.Save("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\@Resources\Images\" + butName + "Triangle.png", Imaging.ImageFormat.Png)
-        IO.Directory.CreateDirectory("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\" + butName)
+        exportImage.Save("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\@Resources\Images\" + SkinName.Text() + "Triangle.png", Imaging.ImageFormat.Png)
+        IO.Directory.CreateDirectory("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\" + SkinName.Text())
 
-        Using sw As New IO.StreamWriter("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\" + butName + "\" + butName + ".ini", False)
+        Using sw As New IO.StreamWriter("C:\Users\Joshua King\Documents\Rainmeter\Skins\Pyramid\" + SkinName.Text() + "\" + SkinName.Text() + ".ini", False)
             sw.WriteLine("[Rainmeter]")
-            sw.WriteLine("Update = 1000")
+            sw.WriteLine("Update = 10")
+            sw.WriteLine("LeftMouseUpAction =[""" + UrlText.Text + """]")
             sw.WriteLine()
             sw.WriteLine("[Variables]")
-            sw.WriteLine("ImageH = " + Convert.ToString(horizontal))
-            sw.WriteLine("ImageW = " + Convert.ToString(vertical))
-            If graphicsVisible Then
-                sw.WriteLine("RotationNum = " + CInt(1))
-                sw.WriteLine("TriAngle = " + CInt(TriAngle))
-                sw.WriteLine("SpinSpeed = " + CInt(0.7))
-                sw.WriteLine("IntTriAngle = " + CInt(TriAngle))
+            sw.WriteLine("ImageH = " + CStr(horizontal))
+            sw.WriteLine("ImageW = " + CStr(vertical))
+            sw.WriteLine("IntTriAngle = " + CStr(TriAngle))
+            If spinCheck.Checked Then
+                sw.WriteLine("RotationNum = " + CStr(1))
+                sw.WriteLine("Angle = " + CStr(TriAngle))
+                sw.WriteLine("SpinSpeed = " + CStr(0.7))
+                If iconVisible Then
+                    sw.WriteLine("IntIconAngle = " + CStr(TriAngle))
+                End If
             End If
             sw.WriteLine()
-            If Not graphicsVisible Then
-                sw.WriteLine("[" + butName + "]")
+            If Not spinCheck.Checked Then
+                sw.WriteLine("[Triangle]")
                 sw.WriteLine("Meter = Image")
-                sw.WriteLine("ImageName =#@#Images\" + Convert.ToString(BaseAngle) + "triangle.png")
-                sw.WriteLine("imageRotate = " + Convert.ToString(TriAngle))
+                sw.WriteLine("ImageName =#@#Images\" + SkinName.Text() + "#triangle.png")
+                sw.WriteLine("imageRotate = #IntTriAngle#")
+                If iconVisible Then
+                    sw.WriteLine("[Triangle]")
+                    sw.WriteLine("Meter = Image")
+                    sw.WriteLine("ImageName =#@#Images\" + SkinName.Text() + "#triangle.png")
+                    sw.WriteLine("imageRotate = #IntTriAngle#")
+                End If
             Else
-
+                sw.WriteLine("[AngleCount]")
+                sw.WriteLine("Measure = Calc")
+                sw.WriteLine("Formula = #Angle#")
+                sw.WriteLine("OnUpdateAction = !SetVariable Angle ""((#Angle# + #SpinSpeed#/#RotationNum#)%90)""")
+                sw.WriteLine("IfCondition = (AngleCount%(#RotationNum#*90) >= 90 -#SpinSpeed#/#RotationNum#)")
+                sw.WriteLine("IfTrueAction = [!DisableMeasure AngleCount]")
+                sw.WriteLine("DynamicVariables = 1")
+                sw.WriteLine("MaxValue = 90")
+                sw.WriteLine()
+                sw.WriteLine("[TriAngleCount]")
+                sw.WriteLine("Measure = Calc")
+                sw.WriteLine("Formula = (360 + #IntTriAngle# + (Sin(Rad(AngleCount)) * (360*#RotationNum#)%360))%360")
+                sw.WriteLine("MaxValue = 360")
+                sw.WriteLine()
+                sw.WriteLine("[TriRotator]")
+                sw.WriteLine("Meter = Rotator")
+                sw.WriteLine("MeasureName = TriAngleCount")
+                sw.WriteLine("ImageName =#@#Images\" + SkinName.Text() + "Triangle.png")
+                sw.WriteLine("OffsetX = (#ImageW# / 2)")
+                sw.WriteLine("OffsetY = (#ImageH# / 2)")
+                sw.WriteLine("W = (Sqrt(#ImageW# ** 2 + #ImageH# ** 2))")
+                sw.WriteLine("H = (Sqrt(#ImageW# ** 2 + #ImageH# ** 2))")
+                sw.WriteLine("MouseOverAction = [!EnableMeasure AngleCount]")
+                If iconVisible Then
+                    sw.WriteLine("[IconAngleCount]")
+                    sw.WriteLine("Measure = Calc")
+                    sw.WriteLine("Formula = (360 + #IntIconAngle# + (Sin(Rad(AngleCount)) * (360*#RotationNum#)%360))%360")
+                    sw.WriteLine("MaxValue = 360")
+                    sw.WriteLine()
+                    sw.WriteLine("[IconRotator]")
+                    sw.WriteLine("Meter = Rotator")
+                    sw.WriteLine("MeasureName = IconAngleCount")
+                    sw.WriteLine("ImageName =#@#Images\" + SkinName.Text() + "Triangle.png")
+                    sw.WriteLine("OffsetX = (#ImageW# / 2)")
+                    sw.WriteLine("OffsetY = (#ImageH# / 2)")
+                    sw.WriteLine("W = (Sqrt(#ImageW# ** 2 + #ImageH# ** 2))")
+                    sw.WriteLine("H = (Sqrt(#ImageW# ** 2 + #ImageH# ** 2))")
+                    If spinMouseOverRadio.Checked Then
+                        sw.WriteLine("MouseOverAction = [!EnableMeasure AngleCount]")
+                    End If
+                End If
             End If
             sw.WriteLine("LeftMouseUpAction =[""" + UrlText.Text + """]")
             sw.WriteLine("ImageTint = " + Convert.ToString(rNum.Value) + "," _
@@ -239,18 +297,10 @@ Public Class Form1
                                         + Convert.ToString(1 - oNum.Value * 2.58))
             sw.WriteLine()
             sw.WriteLine("[Metadata]")
-            sw.WriteLine("Name = " + butName)
+            sw.WriteLine("Name = " + SkinName.Text())
             sw.WriteLine("Author = JoKing")
             sw.WriteLine("Info = Created using Pyramid Skin Maker: Version 0.25")
         End Using
         Me.Close()
-    End Sub
-
-    Private Sub CheckBox1_CheckedChanged_1(sender As Object, e As EventArgs) Handles graphicsCheck.CheckedChanged
-        Panel1.Visible = Not Panel1.Visible
-    End Sub
-
-    Private Sub CheckBox2_CheckedChanged_1(sender As Object, e As EventArgs) Handles spinCheck.CheckedChanged
-        graphicsVisible = spinCheck.Checked
     End Sub
 End Class

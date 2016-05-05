@@ -191,6 +191,14 @@ Public Class Form1
             iconText.Text = ""
         End If
     End Sub
+    Private Sub TrackBar2_Scroll(sender As Object, e As EventArgs) Handles iconSizeBar.Scroll, IconAngleBar.Scroll
+        IconSizeNum.Value = iconSizeBar.Value
+        IconAngleNum.Value = IconAngleBar.Value
+    End Sub
+    Private Sub IconSizeNum_ValueChanged(sender As Object, e As EventArgs) Handles IconSizeNum.ValueChanged, IconAngleBar.Scroll
+        iconSizeBar.Value = IconSizeNum.Value
+        IconAngleBar.Value = IconAngleNum.Value
+    End Sub
 
     'Graphics
     Private Sub CheckBox1_CheckedChanged_1(sender As Object, e As EventArgs) Handles graphicsCheck.CheckedChanged
@@ -228,11 +236,11 @@ Public Class Form1
             sw.WriteLine("ImageW = " + CStr(vertical))
             sw.WriteLine("IntTriAngle = " + CStr(TriAngle))
             If spinCheck.Checked Then
-                sw.WriteLine("RotationNum = " + CStr(1))
+                sw.WriteLine("RotationNum = " + CStr(spinNum.Value))
                 sw.WriteLine("Angle = " + CStr(TriAngle))
-                sw.WriteLine("SpinSpeed = " + CStr(0.7))
+                sw.WriteLine("SpinSpeed = " + CStr(spinSpeedNum.Value / 100))
                 If iconVisible Then
-                    sw.WriteLine("IntIconAngle = " + CStr(TriAngle))
+                    sw.WriteLine("IntIconAngle = " + CStr(iconAngle))
                 End If
             End If
             sw.WriteLine()
@@ -302,5 +310,15 @@ Public Class Form1
             sw.WriteLine("Info = Created using Pyramid Skin Maker: Version 0.25")
         End Using
         Me.Close()
+    End Sub
+
+    Private Sub soinSpeedBar_Scroll(sender As Object, e As EventArgs) Handles spinSpeedBar.Scroll, spinBar.Scroll
+        spinNum.Value = spinBar.Value
+        spinSpeedNum.Value = spinSpeedBar.Value
+    End Sub
+
+    Private Sub spinSpeedNum_ValueChanged(sender As Object, e As EventArgs) Handles spinSpeedNum.ValueChanged, spinNum.ValueChanged
+        spinBar.Value = spinNum.Value
+        spinSpeedBar.Value = spinSpeedNum.Value
     End Sub
 End Class

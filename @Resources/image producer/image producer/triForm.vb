@@ -59,6 +59,7 @@ Public Class triForm
     End Sub
 
     Private Sub triForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.ControlBox = False
         Dim screenWidth = Screen.FromControl(Form1).Bounds.Width
         Dim screenHeight = Screen.FromControl(Form1).Bounds.Height
 

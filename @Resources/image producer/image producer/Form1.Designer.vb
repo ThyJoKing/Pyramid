@@ -58,12 +58,12 @@ Partial Class Form1
         Me.triSizeLabel = New System.Windows.Forms.Label()
         Me.TriSizeBar = New System.Windows.Forms.TrackBar()
         Me.iconPanel = New System.Windows.Forms.Panel()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.IconAngleNum = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TrackBar1 = New System.Windows.Forms.TrackBar()
-        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.IconAngleBar = New System.Windows.Forms.TrackBar()
+        Me.IconSizeNum = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TrackBar2 = New System.Windows.Forms.TrackBar()
+        Me.iconSizeBar = New System.Windows.Forms.TrackBar()
         Me.fileGet = New System.Windows.Forms.Button()
         Me.iconLabel = New System.Windows.Forms.Label()
         Me.iconText = New System.Windows.Forms.TextBox()
@@ -76,6 +76,12 @@ Partial Class Form1
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.graphicsCheck = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.spinNum = New System.Windows.Forms.NumericUpDown()
+        Me.spinBar = New System.Windows.Forms.TrackBar()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.spinSpeedNum = New System.Windows.Forms.NumericUpDown()
+        Me.spinSpeedBar = New System.Windows.Forms.TrackBar()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.spinMouseOverRadio = New System.Windows.Forms.RadioButton()
         Me.spinClickRadio = New System.Windows.Forms.RadioButton()
         Me.spinCheck = New System.Windows.Forms.CheckBox()
@@ -95,12 +101,16 @@ Partial Class Form1
         CType(Me.TriSizeNum, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TriSizeBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.iconPanel.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IconAngleNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IconAngleBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IconSizeNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.iconSizeBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.skinPanel.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.spinNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spinBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spinSpeedNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.spinSpeedBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'createButton
@@ -489,32 +499,31 @@ Partial Class Form1
         '
         'iconPanel
         '
-        Me.iconPanel.Controls.Add(Me.NumericUpDown1)
+        Me.iconPanel.Controls.Add(Me.IconAngleNum)
         Me.iconPanel.Controls.Add(Me.Label1)
-        Me.iconPanel.Controls.Add(Me.TrackBar1)
-        Me.iconPanel.Controls.Add(Me.NumericUpDown2)
+        Me.iconPanel.Controls.Add(Me.IconAngleBar)
+        Me.iconPanel.Controls.Add(Me.IconSizeNum)
         Me.iconPanel.Controls.Add(Me.Label2)
-        Me.iconPanel.Controls.Add(Me.TrackBar2)
+        Me.iconPanel.Controls.Add(Me.iconSizeBar)
         Me.iconPanel.Controls.Add(Me.fileGet)
         Me.iconPanel.Controls.Add(Me.iconLabel)
         Me.iconPanel.Controls.Add(Me.iconText)
         Me.iconPanel.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iconPanel.Location = New System.Drawing.Point(723, 26)
+        Me.iconPanel.Location = New System.Drawing.Point(738, 56)
         Me.iconPanel.Name = "iconPanel"
         Me.iconPanel.Size = New System.Drawing.Size(313, 226)
         Me.iconPanel.TabIndex = 38
         Me.iconPanel.Visible = False
         '
-        'NumericUpDown1
+        'IconAngleNum
         '
-        Me.NumericUpDown1.Increment = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.NumericUpDown1.Location = New System.Drawing.Point(195, 151)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {80, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {30, 0, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(78, 29)
-        Me.NumericUpDown1.TabIndex = 49
-        Me.NumericUpDown1.Value = New Decimal(New Integer() {60, 0, 0, 0})
+        Me.IconAngleNum.Increment = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.IconAngleNum.Location = New System.Drawing.Point(195, 151)
+        Me.IconAngleNum.Maximum = New Decimal(New Integer() {180, 0, 0, 0})
+        Me.IconAngleNum.Minimum = New Decimal(New Integer() {180, 0, 0, -2147483648})
+        Me.IconAngleNum.Name = "IconAngleNum"
+        Me.IconAngleNum.Size = New System.Drawing.Size(78, 29)
+        Me.IconAngleNum.TabIndex = 49
         '
         'Label1
         '
@@ -525,29 +534,28 @@ Partial Class Form1
         Me.Label1.TabIndex = 48
         Me.Label1.Text = "Icon Angle:"
         '
-        'TrackBar1
+        'IconAngleBar
         '
-        Me.TrackBar1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.TrackBar1.Location = New System.Drawing.Point(163, 101)
-        Me.TrackBar1.Maximum = 80
-        Me.TrackBar1.Minimum = 30
-        Me.TrackBar1.Name = "TrackBar1"
-        Me.TrackBar1.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar1.Size = New System.Drawing.Size(69, 125)
-        Me.TrackBar1.SmallChange = 5
-        Me.TrackBar1.TabIndex = 47
-        Me.TrackBar1.TickFrequency = 5
-        Me.TrackBar1.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.TrackBar1.Value = 60
+        Me.IconAngleBar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.IconAngleBar.Location = New System.Drawing.Point(163, 101)
+        Me.IconAngleBar.Maximum = 180
+        Me.IconAngleBar.Minimum = -180
+        Me.IconAngleBar.Name = "IconAngleBar"
+        Me.IconAngleBar.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.IconAngleBar.Size = New System.Drawing.Size(69, 125)
+        Me.IconAngleBar.SmallChange = 5
+        Me.IconAngleBar.TabIndex = 47
+        Me.IconAngleBar.TickFrequency = 5
+        Me.IconAngleBar.TickStyle = System.Windows.Forms.TickStyle.None
         '
-        'NumericUpDown2
+        'IconSizeNum
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(49, 151)
-        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {100, 0, 0, -2147483648})
-        Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(78, 29)
-        Me.NumericUpDown2.TabIndex = 46
-        Me.NumericUpDown2.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.IconSizeNum.Location = New System.Drawing.Point(49, 151)
+        Me.IconSizeNum.Maximum = New Decimal(New Integer() {200, 0, 0, 0})
+        Me.IconSizeNum.Name = "IconSizeNum"
+        Me.IconSizeNum.Size = New System.Drawing.Size(78, 29)
+        Me.IconSizeNum.TabIndex = 46
+        Me.IconSizeNum.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'Label2
         '
@@ -558,19 +566,19 @@ Partial Class Form1
         Me.Label2.TabIndex = 45
         Me.Label2.Text = "Icon Size:"
         '
-        'TrackBar2
+        'iconSizeBar
         '
-        Me.TrackBar2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.TrackBar2.LargeChange = 20
-        Me.TrackBar2.Location = New System.Drawing.Point(18, 101)
-        Me.TrackBar2.Maximum = 100
-        Me.TrackBar2.Minimum = -100
-        Me.TrackBar2.Name = "TrackBar2"
-        Me.TrackBar2.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar2.Size = New System.Drawing.Size(69, 125)
-        Me.TrackBar2.TabIndex = 44
-        Me.TrackBar2.TickFrequency = 10
-        Me.TrackBar2.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.iconSizeBar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.iconSizeBar.LargeChange = 20
+        Me.iconSizeBar.Location = New System.Drawing.Point(18, 101)
+        Me.iconSizeBar.Maximum = 200
+        Me.iconSizeBar.Name = "iconSizeBar"
+        Me.iconSizeBar.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.iconSizeBar.Size = New System.Drawing.Size(69, 125)
+        Me.iconSizeBar.TabIndex = 44
+        Me.iconSizeBar.TickFrequency = 10
+        Me.iconSizeBar.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.iconSizeBar.Value = 100
         '
         'fileGet
         '
@@ -608,7 +616,7 @@ Partial Class Form1
         Me.skinPanel.Controls.Add(Me.SkinName)
         Me.skinPanel.Controls.Add(Me.createButton)
         Me.skinPanel.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.skinPanel.Location = New System.Drawing.Point(723, 274)
+        Me.skinPanel.Location = New System.Drawing.Point(721, 305)
         Me.skinPanel.Name = "skinPanel"
         Me.skinPanel.Size = New System.Drawing.Size(392, 201)
         Me.skinPanel.TabIndex = 39
@@ -649,7 +657,7 @@ Partial Class Form1
         'IconCheck
         '
         Me.IconCheck.AutoSize = True
-        Me.IconCheck.Location = New System.Drawing.Point(21, 236)
+        Me.IconCheck.Location = New System.Drawing.Point(738, 26)
         Me.IconCheck.Name = "IconCheck"
         Me.IconCheck.Size = New System.Drawing.Size(66, 24)
         Me.IconCheck.TabIndex = 40
@@ -659,7 +667,7 @@ Partial Class Form1
         'graphicsCheck
         '
         Me.graphicsCheck.AutoSize = True
-        Me.graphicsCheck.Location = New System.Drawing.Point(343, 236)
+        Me.graphicsCheck.Location = New System.Drawing.Point(12, 236)
         Me.graphicsCheck.Name = "graphicsCheck"
         Me.graphicsCheck.Size = New System.Drawing.Size(99, 24)
         Me.graphicsCheck.TabIndex = 41
@@ -668,15 +676,86 @@ Partial Class Form1
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.spinNum)
+        Me.Panel1.Controls.Add(Me.spinBar)
+        Me.Panel1.Controls.Add(Me.Label4)
+        Me.Panel1.Controls.Add(Me.spinSpeedNum)
+        Me.Panel1.Controls.Add(Me.spinSpeedBar)
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.spinMouseOverRadio)
         Me.Panel1.Controls.Add(Me.spinClickRadio)
         Me.Panel1.Controls.Add(Me.spinCheck)
         Me.Panel1.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel1.Location = New System.Drawing.Point(343, 267)
+        Me.Panel1.Location = New System.Drawing.Point(12, 267)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(313, 256)
+        Me.Panel1.Size = New System.Drawing.Size(482, 256)
         Me.Panel1.TabIndex = 50
         Me.Panel1.Visible = False
+        '
+        'spinNum
+        '
+        Me.spinNum.Location = New System.Drawing.Point(368, 53)
+        Me.spinNum.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.spinNum.Name = "spinNum"
+        Me.spinNum.Size = New System.Drawing.Size(78, 29)
+        Me.spinNum.TabIndex = 58
+        Me.spinNum.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'spinBar
+        '
+        Me.spinBar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.spinBar.LargeChange = 20
+        Me.spinBar.Location = New System.Drawing.Point(331, 31)
+        Me.spinBar.Maximum = 5
+        Me.spinBar.Minimum = 1
+        Me.spinBar.Name = "spinBar"
+        Me.spinBar.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.spinBar.Size = New System.Drawing.Size(69, 79)
+        Me.spinBar.TabIndex = 57
+        Me.spinBar.TickFrequency = 10
+        Me.spinBar.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.spinBar.Value = 1
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(327, 11)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(131, 21)
+        Me.Label4.TabIndex = 56
+        Me.Label4.Text = "Number of Spins:"
+        '
+        'spinSpeedNum
+        '
+        Me.spinSpeedNum.Location = New System.Drawing.Point(223, 52)
+        Me.spinSpeedNum.Maximum = New Decimal(New Integer() {200, 0, 0, 0})
+        Me.spinSpeedNum.Name = "spinSpeedNum"
+        Me.spinSpeedNum.Size = New System.Drawing.Size(78, 29)
+        Me.spinSpeedNum.TabIndex = 55
+        Me.spinSpeedNum.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'spinSpeedBar
+        '
+        Me.spinSpeedBar.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.spinSpeedBar.LargeChange = 20
+        Me.spinSpeedBar.Location = New System.Drawing.Point(186, 30)
+        Me.spinSpeedBar.Maximum = 200
+        Me.spinSpeedBar.Name = "spinSpeedBar"
+        Me.spinSpeedBar.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.spinSpeedBar.Size = New System.Drawing.Size(69, 79)
+        Me.spinSpeedBar.TabIndex = 54
+        Me.spinSpeedBar.TickFrequency = 10
+        Me.spinSpeedBar.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.spinSpeedBar.Value = 100
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(202, 7)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(53, 21)
+        Me.Label3.TabIndex = 50
+        Me.Label3.Text = "Speed"
         '
         'spinMouseOverRadio
         '
@@ -745,14 +824,18 @@ Partial Class Form1
         CType(Me.TriSizeBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.iconPanel.ResumeLayout(False)
         Me.iconPanel.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IconAngleNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IconAngleBar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IconSizeNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.iconSizeBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.skinPanel.ResumeLayout(False)
         Me.skinPanel.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.spinNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spinBar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spinSpeedNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.spinSpeedBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -797,12 +880,12 @@ Partial Class Form1
     Friend WithEvents UrlText As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents SkinName As TextBox
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents IconAngleNum As NumericUpDown
     Friend WithEvents Label1 As Label
-    Friend WithEvents TrackBar1 As TrackBar
-    Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents IconAngleBar As TrackBar
+    Friend WithEvents IconSizeNum As NumericUpDown
     Friend WithEvents Label2 As Label
-    Friend WithEvents TrackBar2 As TrackBar
+    Friend WithEvents iconSizeBar As TrackBar
     Friend WithEvents IconCheck As CheckBox
     Friend WithEvents TriSizeCheck As CheckBox
     Friend WithEvents TriResetButton As Button
@@ -814,4 +897,10 @@ Partial Class Form1
     Friend WithEvents spinMouseOverRadio As RadioButton
     Friend WithEvents spinClickRadio As RadioButton
     Friend WithEvents spinCheck As CheckBox
+    Friend WithEvents spinNum As NumericUpDown
+    Friend WithEvents spinBar As TrackBar
+    Friend WithEvents Label4 As Label
+    Friend WithEvents spinSpeedNum As NumericUpDown
+    Friend WithEvents spinSpeedBar As TrackBar
+    Friend WithEvents Label3 As Label
 End Class

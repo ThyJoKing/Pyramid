@@ -3,10 +3,21 @@ Public Class Form1
     Dim drag As Boolean
     Dim mousex As Integer
     Dim mousey As Integer
+    Dim switch As Boolean = True
 
     'Form Stuff
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         triForm.Show()
+    End Sub
+    Private Sub Form1_LostFocus(sender As Object, e As EventArgs) Handles Me.Activated
+        If Not switch Then
+            triForm.TopMost = True
+            triForm.TopMost = False
+            switch = True
+        End If
+    End Sub
+    Private Sub Form1_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
+        switch = False
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles closeButton.Click
         If MsgBox("Are You Sure?", MsgBoxStyle.YesNo, "Have You Saved?") = MsgBoxResult.Yes Then
@@ -192,10 +203,10 @@ Public Class Form1
         End If
     End Sub
     Private Sub TrackBar2_Scroll(sender As Object, e As EventArgs) Handles iconSizeBar.Scroll, IconAngleBar.Scroll
-        IconSizeNum.Value = iconSizeBar.Value
-        IconAngleNum.Value = IconAngleBar.Value
+        IconSizeNum.Value = Round(iconSizeBar.Value / 5) * 5
+        IconAngleNum.Value = Round(IconAngleBar.Value / 5) * 5
     End Sub
-    Private Sub IconSizeNum_ValueChanged(sender As Object, e As EventArgs) Handles IconSizeNum.ValueChanged, IconAngleBar.Scroll
+    Private Sub IconSizeNum_ValueChanged(sender As Object, e As EventArgs) Handles IconSizeNum.ValueChanged, IconAngleNum.ValueChanged
         iconSizeBar.Value = IconSizeNum.Value
         IconAngleBar.Value = IconAngleNum.Value
         iconSize = IconSizeNum.Value
@@ -263,7 +274,6 @@ Public Class Form1
         End Using
         Me.Close()
     End Sub
-
     Public Sub variablesWrite(sw, TriH, TriV, IconH, IconV)
         sw.WriteLine("[Rainmeter]")
         sw.WriteLine("Update = 10")
@@ -272,19 +282,21 @@ Public Class Form1
         sw.WriteLine("[Variables]")
         sw.WriteLine("TriH = " + CStr(TriH))
         sw.WriteLine("TriW = " + CStr(TriV))
-        sw.WriteLine("IconH = " + CStr(IconH))
-        sw.WriteLine("IconW = " + CStr(IconV))
         sw.WriteLine("IntTriAngle = " + CStr(TriAngle))
+        If iconVisible Then
+            sw.WriteLine("IconH = " + CStr(IconH))
+            sw.WriteLine("IconW = " + CStr(IconV))
+            sw.WriteLine("IconX = " + CStr(iconPosition.X))
+            sw.WriteLine("IconY = " + CStr(iconPosition.Y))
+            sw.WriteLine("IntIconAngle = " + CStr(iconAngle))
+        End If
+
         If spinCheck.Checked Then
             sw.WriteLine("RotationNum = " + CStr(spinNum.Value))
             sw.WriteLine("Angle = " + CStr(TriAngle))
             sw.WriteLine("SpinSpeed = " + CStr(spinSpeedNum.Value / 100))
-            If iconVisible Then
-                sw.WriteLine("IntIconAngle = " + CStr(iconAngle))
-            End If
         End If
     End Sub
-
     Public Sub triangleWrite(sw)
         If Not spinCheck.Checked Then
             sw.WriteLine("[Triangle]")
@@ -321,7 +333,6 @@ Public Class Form1
                                         + Convert.ToString(bNum.Value) + "," _
                                         + Convert.ToString(oNum.Value * 2.55))
     End Sub
-
     Public Sub iconWrite(sw)
         If iconVisible Then
             If Not graphicsCheck.Checked Then
@@ -329,6 +340,10 @@ Public Class Form1
                 sw.WriteLine("Meter = Image")
                 sw.WriteLine("ImageName = " + SkinName.Text() + "Icon.png")
                 sw.WriteLine("ImageRotate = #IntIconAngle#")
+                sw.writeline("H = " + "#IconH#")
+                sw.writeline("W = " + "#IconW#")
+                sw.writeline("X = " + "(#TriH#/2 - #IconH#/2 + #IconX#)")
+                sw.writeline("Y = " + "(#TriW#/2 - #IconW#/2 + #IconY#)")
             Else
                 sw.WriteLine("[IconAngleCount]")
                 sw.WriteLine("Measure = Calc")
@@ -351,11 +366,14 @@ Public Class Form1
             End If
         End If
     End Sub
-
     Public Sub metaWrite(sw)
         sw.WriteLine("[Metadata]")
         sw.WriteLine("Name = " + SkinName.Text())
         sw.WriteLine("Author = JoKing")
         sw.WriteLine("Info = Created using Pyramid Skin Maker: Version 0.29")
+    End Sub
+
+    Private Sub IconAngleNum_ValueChanged(sender As Object, e As EventArgs) Handles IconAngleNum.ValueChanged
+
     End Sub
 End Class

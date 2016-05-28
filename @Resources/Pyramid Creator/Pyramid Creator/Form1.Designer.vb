@@ -224,6 +224,7 @@ Partial Class Form1
         'bLabel
         '
         Me.bLabel.AutoSize = True
+        Me.bLabel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.bLabel.ForeColor = System.Drawing.Color.Blue
         Me.bLabel.Location = New System.Drawing.Point(291, 107)
         Me.bLabel.Name = "bLabel"
@@ -234,6 +235,7 @@ Partial Class Form1
         'gLabel
         '
         Me.gLabel.AutoSize = True
+        Me.gLabel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.gLabel.ForeColor = System.Drawing.Color.Green
         Me.gLabel.Location = New System.Drawing.Point(291, 75)
         Me.gLabel.Name = "gLabel"
@@ -244,6 +246,7 @@ Partial Class Form1
         'rLabel
         '
         Me.rLabel.AutoSize = True
+        Me.rLabel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.rLabel.ForeColor = System.Drawing.Color.Red
         Me.rLabel.Location = New System.Drawing.Point(291, 43)
         Me.rLabel.Name = "rLabel"
@@ -287,7 +290,6 @@ Partial Class Form1
         'oBar
         '
         Me.oBar.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.oBar.LargeChange = 1
         Me.oBar.Location = New System.Drawing.Point(380, 157)
         Me.oBar.Maximum = 100
         Me.oBar.Minimum = 1
@@ -517,7 +519,6 @@ Partial Class Form1
         '
         'IconAngleNum
         '
-        Me.IconAngleNum.Increment = New Decimal(New Integer() {5, 0, 0, 0})
         Me.IconAngleNum.Location = New System.Drawing.Point(195, 151)
         Me.IconAngleNum.Maximum = New Decimal(New Integer() {180, 0, 0, 0})
         Me.IconAngleNum.Minimum = New Decimal(New Integer() {180, 0, 0, -2147483648})
@@ -543,7 +544,6 @@ Partial Class Form1
         Me.IconAngleBar.Name = "IconAngleBar"
         Me.IconAngleBar.Orientation = System.Windows.Forms.Orientation.Vertical
         Me.IconAngleBar.Size = New System.Drawing.Size(69, 125)
-        Me.IconAngleBar.SmallChange = 5
         Me.IconAngleBar.TabIndex = 47
         Me.IconAngleBar.TickFrequency = 5
         Me.IconAngleBar.TickStyle = System.Windows.Forms.TickStyle.None

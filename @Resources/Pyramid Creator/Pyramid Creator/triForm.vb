@@ -5,32 +5,10 @@ Public Class triForm
     Dim mousey As Integer
 
     Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
-        Dim vertical As Integer = (TriSize * Tan(BaseAngle * PI / 180)) / (Sqrt(Tan(BaseAngle * PI / 180) + 4))
-        Dim horizontal As Integer = (2 * TriSize) / (Sqrt(Tan(BaseAngle * PI / 180) + 4))
-        Dim pointArray As PointF() = {New PointF(horizontal / 2, 0),
-                                      New PointF(0, vertical),
-                                      New PointF(horizontal, vertical)}
         Try
-            shownImage = New Bitmap(horizontal, vertical)
-            Dim g As Graphics = Graphics.FromImage(shownImage)
-            g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-            g.FillPolygon(BrushColour, pointArray)
-
-            e.Graphics.TranslateTransform(Me.Width / 2 + triPosition.X, Me.Height / 2 + triPosition.Y)
-            e.Graphics.RotateTransform(TriAngle)
-            e.Graphics.DrawImage(shownImage, -CInt(shownImage.Width / 2), -CInt(shownImage.Height / 2), shownImage.Width, shownImage.Height)
-            e.Graphics.ResetTransform()
-
+            imageDraw(e)
             If iconVisible Then
-                If IsValidImage(Form1.iconText.Text()) Then
-                    shownIcon = Image.FromFile(Form1.iconText.Text())
-                    horizontal = shownIcon.Width / shownIcon.Height * iconSize
-                    vertical = shownIcon.Height / shownIcon.Width * iconSize
-                    e.Graphics.DrawImage(shownIcon, CInt(Me.Width / 2 + triPosition.X - horizontal / 2 + iconPosition.X), CInt(Me.Height / 2 + triPosition.Y - vertical / 2 + iconPosition.Y), CInt(horizontal), CInt(vertical))
-                Else
-                    iconVisible = False
-                    Form1.iconText.Text() = ""
-                End If
+                iconDraw(e)
             End If
 
         Catch generatedExceptionName As ArgumentException

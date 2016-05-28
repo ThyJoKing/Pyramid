@@ -4,7 +4,7 @@
     Public TriSize = 100
     Public horBor = 0
     Public verBor = 0
-    Public BrushColour As SolidBrush = New SolidBrush(Color.Black)
+    Public BrushColour As SolidBrush
     Public butName = "Test"
     Public butHor = 200
     Public butVer = 200
